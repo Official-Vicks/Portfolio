@@ -1,0 +1,92 @@
+body {
+  scroll-behavior: smooth;
+}
+
+.hero {
+  min-height: 100vh;
+  display: flex;
+  color: var(--hero-text);
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  color: white;
+
+  background: linear-gradient(120deg,
+      #ff7a18,
+      #ff9f1c,
+      #ffbf69,
+      #ff7a18);
+  background-size: 300% 300%;
+  animation: gradientMove 18s ease infinite;
+}
+
+@keyframes gradientMove {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+
+
+.section-padding {
+  padding: 80px 0;
+}
+
+.badge-skill {
+  margin: 5px;
+  padding: 10px 15px;
+  font-size: 0.9rem;
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+  transition: 0.3s ease;
+}
+
+footer {
+  background: #0d6efd;
+  color: white;
+}
+
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-12px);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+
+:root {
+  --hero-text: #ffffff;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --hero-text: #1f2937;
+  }
+
+  .hero {
+    color: var(--hero-text);
+  }
+}
