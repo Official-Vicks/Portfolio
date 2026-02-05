@@ -1,23 +1,129 @@
-body {
-  scroll-behavior: smooth;
-}
+/* =========================
+   THEME VARIABLES
+   ========================= */
 
-.hero {
-  min-height: 100vh;
-  display: flex;
-  color: var(--hero-text);
-  align-items: center;
-  position: relative;
-  overflow: hidden;
-  color: white;
+/* DARK MODE (default) */
+:root {
+  --bg-main: #0f172a;
+  --bg-section: #020617;
+  --text-main: #e5e7eb;
+  --text-muted: #9ca3af;
 
-  background: linear-gradient(120deg,
+  --hero-gradient: linear-gradient(120deg,
       #ff7a18,
       #ff9f1c,
       #ffbf69,
       #ff7a18);
+
+  --btn-bg: rgba(255, 255, 255, 0.15);
+  --btn-border: rgba(255, 255, 255, 0.35);
+}
+
+/* LIGHT MODE */
+[data-theme="light"] {
+  --bg-main: #ffffff;
+  --bg-section: #f8fafc;
+  --text-main: #0f172a;
+  --text-muted: #475569;
+
+  --hero-gradient: linear-gradient(120deg,
+      #ff7a18,
+      #ff9f1c,
+      #ffbf69,
+      #ff7a18);
+
+  --btn-bg: rgba(0, 0, 0, 0.08);
+  --btn-border: rgba(0, 0, 0, 0.25);
+}
+
+/* =========================
+   GLOBAL STYLES
+   ========================= */
+
+body {
+  padding-top: 50px;
+  margin: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
+    sans-serif;
+  background: var(--bg-main);
+  color: var(--text-main);
+  scroll-behavior: smooth;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+section {
+  background: var(--bg-main);
+}
+
+section.bg-light {
+  background: var(--bg-section) !important;
+}
+
+p {
+  color: var(--text-muted);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  color: var(--text-main);
+}
+
+/* NAVBAR (ALWAYS DARK, BOOTSTRAP-SAFE) */
+.custom-navbar {
+  background-color: #020617 !important;
+  z-index: 1030;
+}
+
+.custom-navbar .navbar-brand,
+.custom-navbar .nav-link {
+  color: #e5e7eb !important;
+}
+
+.custom-navbar .nav-link:hover {
+  color: #ffffff !important;
+}
+
+
+
+/* =========================
+   THEME TOGGLE BUTTON
+   ========================= */
+
+.theme-toggle {
+  background: var(--btn-bg);
+  border: 1px solid var(--btn-border);
+  color: var(--text-main);
+  border-radius: 50px;
+  padding: 6px 14px;
+  cursor: pointer;
+  backdrop-filter: blur(6px);
+  transition: all 0.3s ease;
+}
+
+.theme-toggle:hover {
+  transform: scale(1.05);
+}
+
+/* =========================
+   HERO SECTION
+   ========================= */
+
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+
+  background: var(--hero-gradient);
   background-size: 300% 300%;
   animation: gradientMove 18s ease infinite;
+
+  transition: background 0.5s ease;
 }
 
 @keyframes gradientMove {
@@ -33,29 +139,6 @@ body {
     background-position: 0% 50%;
   }
 }
-
-
-
-.section-padding {
-  padding: 80px 0;
-}
-
-.badge-skill {
-  margin: 5px;
-  padding: 10px 15px;
-  font-size: 0.9rem;
-}
-
-.project-card:hover {
-  transform: translateY(-5px);
-  transition: 0.3s ease;
-}
-
-footer {
-  background: #0d6efd;
-  color: white;
-}
-
 
 .hero-content {
   position: relative;
@@ -77,16 +160,53 @@ footer {
   }
 }
 
-:root {
-  --hero-text: #ffffff;
+/* =========================
+   SECTIONS
+   ========================= */
+
+.section-padding {
+  padding: 80px 0;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    --hero-text: #1f2937;
-  }
+/* =========================
+   SKILLS
+   ========================= */
 
-  .hero {
-    color: var(--hero-text);
+.badge-skill {
+  margin: 5px;
+  padding: 10px 15px;
+  font-size: 0.9rem;
+}
+
+/* =========================
+   PROJECTS
+   ========================= */
+
+.project-card {
+  transition: transform 0.3s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+}
+
+/* =========================
+   FOOTER
+   ========================= */
+
+footer {
+  background: var(--bg-section);
+  color: var(--text-muted);
+}
+
+/* =========================
+   ACCESSIBILITY / PERFORMANCE
+   ========================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .hero,
+  .hero-content {
+    animation: none !important;
   }
 }
