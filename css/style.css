@@ -4,10 +4,10 @@
 
 /* DARK MODE (default) */
 :root {
-  --bg-main: #0f172a;
+  --bg-main: #011031;
   --bg-section: #020617;
   --text-main: #e5e7eb;
-  --text-muted: #9ca3af;
+  --text-muted: #020a18;
 
   --hero-gradient: linear-gradient(120deg,
       #ff7a18,
